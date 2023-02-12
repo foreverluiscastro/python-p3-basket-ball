@@ -182,3 +182,94 @@ def game_dict():
             ]
         }
     }
+
+import pprint
+
+# HELPER METHODS
+def get_all_players():
+    pass
+    return [*game_dict()['home']['players'], *game_dict()['away']['players']]
+
+def get_player(player_name):
+    pass
+    for player_obj in get_all_players():
+        if player_obj['name'] == player_name:
+            return player_obj
+        
+    return None
+
+def get_team(team_name):
+    pass
+    for team in game_dict():
+        pass
+        current_team = game_dict()[team]
+        if current_team['team_name'] == team_name:
+            pass
+            return current_team
+    
+    return None
+    
+
+# METHODS
+
+def num_points_per_game(player_name):
+    if get_player(player_name) == None:
+        return "Player Not Found"
+    
+    return get_player(player_name)['points_per_game']
+        
+def player_age(player_name):
+    pass
+    if get_player(player_name) == None:
+        return "Player Not Found"
+    
+    return get_player(player_name)['age']
+
+def team_colors(team_name):
+    pass
+    if get_team(team_name) == None:
+        return "Team Not Found"
+    
+    return get_team(team_name)['colors']
+    
+
+def team_names():
+    pass
+    team_list = []
+    for team in game_dict():
+        pass
+        team_list.append(game_dict()[team]['team_name'])
+        
+    return team_list
+
+def player_numbers(team_name):
+    pass
+    if get_team(team_name) == None:
+        return "Team Not Found"
+    
+    player_numbers_list = []
+    team_players = get_team(team_name)['players']
+    for player in team_players:
+        pass
+        player_numbers_list.append(player['number'])
+        
+    return player_numbers_list
+
+def player_stats(player_name):
+    pass
+    if get_player(player_name) == None:
+        return 'Player Not Found'
+    
+    return get_player(player_name)
+
+def average_rebounds_by_shoe_brand():
+    pass
+
+def most_career_points():
+    pass
+
+def matching_jersey_nums():
+    pass
+
+def longest_player_name():
+    pass
