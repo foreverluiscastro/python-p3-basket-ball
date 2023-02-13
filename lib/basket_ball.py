@@ -183,11 +183,15 @@ def game_dict():
         }
     }
 
+
+import ipdb
 import pprint
 
 # HELPER METHODS
 def get_all_players():
     pass
+    # the python * operator does the same job as the spread operator in JS
+    # create an array of all the players
     return [*game_dict()['home']['players'], *game_dict()['away']['players']]
 
 def get_player(player_name):
@@ -264,12 +268,74 @@ def player_stats(player_name):
 
 def average_rebounds_by_shoe_brand():
     pass
+    all_players = get_all_players()
+    my_dict = {}
+    # iterate through all the players and collect each shoe brand along with the number of rebounds for that player inside of the empty dictonary
+    for player in all_players:
+        pass
+        for stat_key in player:
+            pass
+            if stat_key == 'shoe_brand':
+                pass
+                # check if the key is already inside my_dict
+                if player[stat_key] in my_dict.keys():
+                    pass
+                    my_dict[player[stat_key]].append(player["rebounds_per_game"])
+                else:
+                    pass
+                    # if not, include the key in the dict, create a new array and set this element as the first element in the array
+                    my_dict[player[stat_key]] = [player["rebounds_per_game"]]
+    # iterate through my_dict and print the average rebounds for each show brand
+    for brand in my_dict:
+        pass
+        print(f"{brand}: {sum(my_dict[brand])}")
+    
+    # ipdb.set_trace()
+                
 
 def most_career_points():
     pass
+    all_players = get_all_players()
+    the_one = {'name': '', 'career_points': 0 }
+    # iterate through all the players and find the player with the most career points
+    # then, add that players name and points to the_one dict
+    # that playter becomes the player to beat, and the iteration continues
+    for player in all_players:
+        pass
+        if player['career_points'] > the_one['career_points']:
+            pass
+            the_one['name'] = player['name']
+            the_one['career_points'] = player['career_points']
+            
+    print(f"{the_one['name']} has the most career points with {the_one['career_points']} points.")
 
 def matching_jersey_nums():
     pass
-
+    # grab each team seperately
+    home_team = game_dict()['home']['players']
+    away_team = game_dict()['away']['players']
+    # create a list of both teams jersey numbers
+    home_nums = [player['number'] for player in home_team]
+    away_nums = [player['number'] for player in away_team]
+    # ipdb.set_trace()
+    for idx, num in enumerate(home_nums):
+        pass
+        home_idx = idx
+        if num in away_nums:
+            pass
+            away_idx = away_nums.index(num)
+            return f"{home_team[home_idx]['name']} has the same jersey number as {away_team[away_idx]['name']}"
+    
+    return "No matches found."
+    
 def longest_player_name():
     pass
+    all_players = get_all_players()
+    longest_name = ''
+    for player in all_players:
+        pass
+        if len(player['name']) > len(longest_name):
+            pass
+            longest_name = player['name']
+    
+    return f"{longest_name} has the longest name at {len(longest_name) - 1} characters long!"
